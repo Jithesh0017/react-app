@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata: 
-  name: React-app
+  name: Jithesh
 spec:
   replicas: 1
   selector:
     matchlabels:
-      app: React-app
+      app: nginx
 template:
   metadata:
     labels:
-      app: React-app
+      app: nginx
   spec:
     containers:
     - name: React-app-c1
