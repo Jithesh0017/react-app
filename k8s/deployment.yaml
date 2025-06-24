@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: c1
-        image: Jithesh0017/react-app
+        image: jithesh0017/react-app
         ports:
         - containerPort: 80
