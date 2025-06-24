@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata: 
-  name: react-app
+  name: nginx-deployment
 spec:
   replicas: 1
   selector:
     matchlabels:
-      app: react-app
+      app: nginx
   template:
     metadata:
       labels:
-        app: react-app
+        app: nginx
     spec:
       containers:
       - name: c1
-        image: jithesh0017/react-app
+        image: nginx
         ports:
         - containerPort: 80
