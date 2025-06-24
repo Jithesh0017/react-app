@@ -15,7 +15,7 @@ spec:
         app: nginx
     spec:
       containers:
-      - name: c2
+      - name: c1
         image: Jithesh0017/react-app
         ports:
         - containerPort: 80
