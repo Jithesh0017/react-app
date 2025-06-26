@@ -3,16 +3,16 @@ kind: Deployment
 metadata:
   name: react-deployment
   labels:
-    app: react-app
+    app: react
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: react-app
+      app: react
   template:
     metadata:
       labels:
-        app: react-app
+        app: react
     spec:
       containers:
       - name: c2
@@ -27,8 +27,8 @@ metadata:
 spec:
   type: LordBalancer
   selector:
-    app: react-app
+    app: react
   ports:
     - protocol: TCP
       port: 80
-
+      
