@@ -25,10 +25,9 @@ kind: Service
 metadata:
   name: react-service
 spec:
-  type: LordBalancer
+  type: LoadBalancer
   selector:
     app: react
   ports:
     - protocol: TCP
       port: 80
-      
