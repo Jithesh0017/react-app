@@ -1,6 +1,6 @@
 {
-  "name": "King",
-  "version": "4.3",
+  "name": "QUEEN",
+  "version": "4.5",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
