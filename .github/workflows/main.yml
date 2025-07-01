@@ -1,0 +1,11 @@
+name: main branch
+on:
+  push:
+    branches:
+      - dev
+jobs:
+  push-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: push branch
+        run: echo "push to main branch"
