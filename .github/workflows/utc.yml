@@ -1,0 +1,10 @@
+name: cron
+on:
+  schedule:
+   - cron: '* * * * *'
+jobs:
+  cron-utc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: cron-schedule
+        run: echo "dp"
