@@ -1,0 +1,9 @@
+name: pull
+on: pull_request
+jobs:
+ pull-request-jobs:
+   runs-on: ubuntu-latest
+   steps:
+     - name: pull
+       run: echo "pull request"
+ 
