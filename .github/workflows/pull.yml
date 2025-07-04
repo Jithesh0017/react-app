@@ -4,6 +4,6 @@ jobs:
  pull-request-jobs:
    runs-on: ubuntu-latest
    steps:
-     - name: pull
+     - name: pull-request
        run: echo "pull request"
  
