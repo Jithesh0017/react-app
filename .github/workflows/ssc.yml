@@ -1,0 +1,10 @@
+name: cron
+on:
+  schedule:
+   - cron: '*/5 * * * *'
+jobs:
+  cron-utc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: schedule
+        run: echo "every 5 minutes"
