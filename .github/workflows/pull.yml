@@ -1,7 +1,7 @@
 name: pull
 on: pull_request
 jobs:
- pull-request-jobs:
+ pull-job:
    runs-on: ubuntu-latest
    steps:
      - name: pull-request
