@@ -1,5 +1,5 @@
 name: pull
-on: pull_request
+on: workflow_dispatch
 jobs:
  pull-job:
    runs-on: ubuntu-latest
