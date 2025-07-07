@@ -15,6 +15,10 @@ jobs:
         uses: actions/setup-node@3.9.1
         with:
           node-version: 20
+      - name: remove nginx
+        run: sudo rm -rf /usr/share/nginx/html/*
+      - name: git clone react-app
+        run: 
       - name: docker build
         run: docker build -t ${{ vars.DH_USERNAME }}/react-app:latest .
       - name: docker push 
