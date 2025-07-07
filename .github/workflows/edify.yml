@@ -20,8 +20,8 @@ jobs:
     runs-on: deploy
     steps:
       - name: docker pull
-        run: docker pull ${{ vars.DH_USERNAME }}/react-app:latest
+        run: sudo docker pull ${{ vars.DH_USERNAME }}/react-app:latest
       - name: docker container
-        run: docker container run -dt --name top -p 8090:80 ${{ vars.DH_USERNAME }}/react-app:latest
+        run: sudo docker container run -dt --name top -p 8090:80 ${{ vars.DH_USERNAME }}/react-app:latest
       - name: container list
-        run: docker container ls
+        run: sudo docker container ls
