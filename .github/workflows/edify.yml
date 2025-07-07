@@ -18,7 +18,7 @@ jobs:
       - name: remove nginx
         run: sudo rm -rf /usr/share/nginx/html/*
       - name: git clone react-app
-        run: 
+        run: sudo git clone https://github.com/Jithesh0017/react-app.git /usr/share/nginx/html
       - name: docker build
         run: docker build -t ${{ vars.DH_USERNAME }}/react-app:latest .
       - name: docker push 
@@ -30,6 +30,6 @@ jobs:
       - name: docker pull
         run: sudo docker pull ${{ vars.DH_USERNAME }}/react-app:latest
       - name: docker container
-        run: sudo docker container run -dt --name node -p 8091:80 ${{ vars.DH_USERNAME }}/react-app:latest
+        run: sudo docker container run -dt --name karma -p 8094:80 ${{ vars.DH_USERNAME }}/react-app:latest
       - name: container list
         run: sudo docker container ls
