@@ -6,10 +6,6 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4.2.2
-      - name: remove nginx
-        run: sudo rm -rf /usr/share/nginx/html*
-      - name: copy clone
-        run: sudo git clone https://github.com/Jithesh0017/react-app.git /usr/share/nginx/html
       - name: docker build
         run: docker build -t ${{ vars.DC_USERNAME }}/react-app:latest .
       - name: docker login
@@ -26,7 +22,7 @@ jobs:
       - name: docker pull image
         run: sudo docker pull ${{ vars.DC_USERNAME }}/react-app:latest
       - name: docker container pull
-        run: sudo docker container run -dt --name git -p 8084:80 ${{ vars.DC_USERNAME }}/react-app:latest
+        run: sudo docker container run -dt --name hub -p 8085:80 ${{ vars.DC_USERNAME }}/react-app:latest
       - name: list container
         run: sudo docker container ls
         
