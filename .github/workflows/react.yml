@@ -22,6 +22,6 @@ jobs:
       - name: docker pull
         run: docker pull ${{ vars.DH_USERNAME }}/react-app:latest
       - name: docker container
-        run: docker container run -dt --name uf -p 8090:80 ${{ vars.DH_USERNAME }}/react-app:latest
+        run: docker container run -dt --name top -p 8090:80 ${{ vars.DH_USERNAME }}/react-app:latest
       - name: container list
         run: docker container ls
