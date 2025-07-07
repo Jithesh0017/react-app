@@ -11,6 +11,10 @@ jobs:
         with:
           username: ${{ vars.DH_USERNAME }}
           password: ${{ secrets.DH_PASSWORD }}
+      - name: setup nodejs
+        uses: actions/setup-node@3.9.1
+        with:
+          node-version: 20
       - name: docker build
         run: docker build -t ${{ vars.DH_USERNAME }}/react-app:latest .
       - name: docker push 
