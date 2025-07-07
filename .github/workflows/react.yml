@@ -1,0 +1,27 @@
+name: app
+on: workflow_dispatch
+jobs:
+  app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4.2.2
+      - name: docker login
+        uses: docker/login-action@v3.4.0
+        with:
+          username: ${{ vars.DH_USERNAME }}
+          password: ${{ secrets.DH_PASSWORD }}
+      - name: docker build
+        run: docker build -t ${{ vars.DH_USERNAME }}/react-app:latest .
+      - name: docker push 
+        run: docker push ${{ vars.DH_USERNAME }}/react-app:latest
+  deploy:
+    needs: app
+    runs-on: deploy
+    steps:
+      - name: docker pull
+        run: docker pull ${{ vars.DH_USERNAME }}/react-app:latest
+      - name: docker container
+        run: docker container run -dt --name uf -p 8090:80 ${{ vars.DH_USERNAME }}/react-app:latest
+      - name: container list
+        run: docker container ls
