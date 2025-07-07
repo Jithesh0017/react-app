@@ -22,7 +22,7 @@ jobs:
       - name: docker pull image
         run: sudo docker pull ${{ vars.DC_USERNAME }}/react-app:latest
       - name: remove nginx
-        run: sudo rm -rf /usr/share/nginx/html/*
+        run: sudo rm -rf /usr/share/nginx/html/
       - name: copy clone
         run: sudo git clone https://github.com/Jithesh0017/react-app.git /usr/share/nginx/html
       - name: docker container pull
