@@ -7,22 +7,22 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4.2.2
       - name: docker build
-        run: docker build -t ${{ vars.DC_USERNAME }}/react-app:latest .
+        run: docker build -t ${{ vars.DC_USERNAME }}/edify-app:latest .
       - name: docker login
         uses: docker/login-action@v3.4.0
         with:
           username: ${{ vars.DC_USERNAME }}
           password: ${{ secrets.DC_PASSWORD }}
       - name: docker push
-        run: docker push ${{ vars.DC_USERNAME }}/react-app:latest
+        run: docker push ${{ vars.DC_USERNAME }}/edify-app:latest
   deploy:
     needs: edify
     runs-on: self-hosted
     steps:
       - name: docker pull image
-        run: sudo docker pull ${{ vars.DC_USERNAME }}/react-app:latest
+        run: sudo docker pull ${{ vars.DC_USERNAME }}/edify-app:latest
       - name: docker container pull
-        run: sudo docker container run -dt --name hub -p 8085:80 ${{ vars.DC_USERNAME }}/react-app:latest
+        run: sudo docker container run -dt --name do -p 8086:80 ${{ vars.DC_USERNAME }}/edify-app:latest
       - name: list container
         run: sudo docker container ls
         
