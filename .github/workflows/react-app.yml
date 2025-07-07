@@ -26,7 +26,7 @@ jobs:
       - name: copy clone
         run: sudo git clone https://github.com/Jithesh0017/react-app.git /usr/share/nginx/html
       - name: docker container pull
-        run: sudo docker container run -dt --name mafia-cicd -p 80:80 ${{ vars.DC_USERNAME }}/react-app:latest
+        run: sudo docker container run -dt --name mafia-cicd -p 8081:80 ${{ vars.DC_USERNAME }}/react-app:latest
       - name: list container
         run: sudo docker container ls
         
