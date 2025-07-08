@@ -22,6 +22,6 @@ jobs:
       - name: docker pull
         run: sudo docker pull ${{ vars.DH_USERNAME }}/react-app
       - name: docker container
-        run: sudo docker container run -dt --name appo -p 8098:80 ${{ vars.DH_USERNAME }}/react-app
+        run: sudo docker container run -dt --name lol -p 8099:80 ${{ vars.DH_USERNAME }}/react-app
       - name: container list
         run: sudo docker container ls
