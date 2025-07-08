@@ -16,8 +16,8 @@ jobs:
       - name: docker push image
         run: docker push ${{ vars.DH_USERNAME }}/react-app
   deploy:
-    needs: app
     runs-on: self-hosted
+    needs: app
     steps:
       - name: docker pull
         run: sudo docker pull ${{ vars.DH_USERNAME }}/react-app
