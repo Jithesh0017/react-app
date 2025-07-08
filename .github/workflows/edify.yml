@@ -7,7 +7,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4.2.2
       - name: build docker image
-        run: docker build -t ${{ vars.DHH_USERNAME }}/react-app:latest .
+        run: docker build -t ${{ vars.DHH_USERNAME }}/react-app .
       - name: remove nginx
         run: sudo rm -rf /usr/share/nginx/html/*
       - name: branch pull clone
@@ -18,7 +18,7 @@ jobs:
           username: ${{ vars.DHH_USERNAME }}
           password: ${{ secrets.DHH_PASSWORD }}
       - name: docker push image
-        run: docker push ${{ vars.DHH_USERNAME }}/react-app:latest
+        run: docker push ${{ vars.DHH_USERNAME }}/react-app
   deploy:
     runs-on: self-hosted
     needs: app
@@ -26,6 +26,6 @@ jobs:
       - name: docker pull
         run: sudo docker pull ${{ vars.DHH_USERNAME }}/react-app:latest
       - name: docker container
-        run: sudo docker container run -dt --name oah -p 8115:80 ${{ vars.DHH_USERNAME }}/react-app:latest
+        run: sudo docker container run -dt --name goit -p 8116:80 ${{ vars.DHH_USERNAME }}/react-app:latest
       - name: container list
         run: sudo docker container ls
