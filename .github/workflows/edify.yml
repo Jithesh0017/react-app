@@ -6,26 +6,26 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4.2.2
+      - name: build docker image
+        run: docker build -t ${{ vars.DHH_USERNAME }}/react-app:latest .
       - name: remove nginx
         run: sudo rm -rf /usr/share/nginx/html/*
       - name: branch pull clone
         run: sudo git clone -b docker https://github.com/Jithesh0017/react-app.git /usr/share/nginx/html
-      - name: build docker image
-        run: docker build -t ${{ vars.DHH_USERNAME }}/nginx .
       - name: docker login
         uses: docker/login-action@v3.4.0
         with:
           username: ${{ vars.DHH_USERNAME }}
           password: ${{ secrets.DHH_PASSWORD }}
       - name: docker push image
-        run: docker push ${{ vars.DHH_USERNAME }}/nginx
+        run: docker push ${{ vars.DHH_USERNAME }}/react-app:latest
   deploy:
     runs-on: self-hosted
     needs: app
     steps:
       - name: docker pull
-        run: sudo docker pull ${{ vars.DHH_USERNAME }}/react-app
+        run: sudo docker pull ${{ vars.DHH_USERNAME }}/react-app:latest
       - name: docker container
-        run: sudo docker container run -dt --name smooth -p 8114:80 ${{ vars.DHH_USERNAME }}/react-app
+        run: sudo docker container run -dt --name oah -p 8115:80 ${{ vars.DHH_USERNAME }}/react-app:latest
       - name: container list
         run: sudo docker container ls
