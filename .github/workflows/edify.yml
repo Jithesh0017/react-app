@@ -6,6 +6,8 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4.2.2
+      - name: branch pull clone
+        run: sudo git clone -b docker https://github.com/Jithesh0017/react-app.git
       - name: build docker image
         run: docker build -t ${{ vars.DH_USERNAME }}/react-app .
       - name: docker login
@@ -20,8 +22,8 @@ jobs:
     needs: app
     steps:
       - name: docker pull
-        run: sudo docker pull ${{ vars.DH_USERNAME }}/edify-app
+        run: sudo docker pull ${{ vars.DH_USERNAME }}/react-app
       - name: docker container
-        run: sudo docker container run -dt --name loone -p 8113:80 ${{ vars.DH_USERNAME }}/edify-app
+        run: sudo docker container run -dt --name loone -p 8113:80 ${{ vars.DH_USERNAME }}/react-app
       - name: container list
         run: sudo docker container ls
