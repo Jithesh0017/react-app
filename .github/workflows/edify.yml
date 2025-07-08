@@ -20,8 +20,8 @@ jobs:
     needs: app
     steps:
       - name: docker pull
-        run: sudo docker pull ${{ vars.DH_USERNAME }}/react-app
+        run: sudo docker pull ${{ vars.DH_USERNAME }}/edify-app
       - name: docker container
-        run: sudo docker container run -dt --name loll -p 8112:80 ${{ vars.DH_USERNAME }}/react-app
+        run: sudo docker container run -dt --name loone -p 8113:80 ${{ vars.DH_USERNAME }}/edify-app
       - name: container list
         run: sudo docker container ls
