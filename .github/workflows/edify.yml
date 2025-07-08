@@ -12,16 +12,16 @@ jobs:
           username: ${{ vars.DH_USERNAME }}
           password: ${{ secrets.DH_PASSWORD }}
       - name: build docker image
-        run: docker build -t ${{ vars.DH_USERNAME }}/react-app:latest .
+        run: docker build -t ${{ vars.DH_USERNAME }}/new-edify-app:latest .
       - name: docker push image
-        run: docker push ${{ vars.DH_USERNAME }}/react-app:latest
+        run: docker push ${{ vars.DH_USERNAME }}/new-edify-app:latest
   deploy:
     needs: app
     runs-on: self-hosted
     steps:
       - name: docker pull
-        run: sudo docker pull ${{ vars.DH_USERNAME }}/react-app:latest
+        run: sudo docker pull ${{ vars.DH_USERNAME }}/new-edify-app:latest
       - name: docker container
-        run: sudo docker container run -dt --name react-app -p 8095:80 ${{ vars.DH_USERNAME }}/react-app:latest
+        run: sudo docker container run -dt --name app -p 8096:80 ${{ vars.DH_USERNAME }}/new-edify-app:latest
       - name: container list
         run: sudo docker container ls
