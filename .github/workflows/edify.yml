@@ -24,8 +24,8 @@ jobs:
     needs: app
     steps:
       - name: docker pull
-        run: sudo docker pull ${{ vars.DHH_USERNAME }}/sha256:4518295c28a813b1117ef935f9dad2dbfda8db00c633197f36a9e4ffe5a7f589
+        run: sudo docker pull jithesh0017/react-app:latest
       - name: docker container
-        run: sudo docker container run -dt --name got -p 8117:80 ${{ vars.DHH_USERNAME }}/sha256:4518295c28a813b1117ef935f9dad2dbfda8db00c633197f36a9e4ffe5a7f589
+        run: sudo docker container run -dt --name got -p 8117:80 jithesh0017/react-app:latest
       - name: container list
         run: sudo docker container ls
