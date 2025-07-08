@@ -1,0 +1,31 @@
+name: doit
+on: workflow_dispatch
+jobs:
+  doit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4.2.2
+      - name: remove nginx
+        run: sudo rm -rf /var/www/html/*
+      - name: git clone
+        run: sudo git clone https://github.com/Jithesh0017/doit.git /var/www/html
+      - name: build docker image
+        run: docker build -t ${{ vars.DH_USERNAME }}/nginx .
+      - name: docker login
+        uses: docker/login-action@v3.4.0
+        with:
+          username: ${{ vars.DH_USERNAME }}
+          password: ${{ secrets.DH_PASSWORD }}
+      - name: docker push image
+        run: docker push ${{ vars.DH_USERNAME }}/nginx
+  deploy:
+    needs: doit
+    runs-on: self-hosted
+    steps:
+      - name: docker pull
+        run: sudo docker pull ${{ vars.DH_USERNAME }}/nginx
+      - name: docker container
+        run: sudo docker container run -dt --name lolli -p 8100:80 ${{ vars.DH_USERNAME }}/nginx
+      - name: container list
+        run: sudo docker container ls
