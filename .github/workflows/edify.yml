@@ -7,7 +7,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4.2.2
       - name: build docker image
-        run: docker build -t ${{ vars.DHH_USERNAME }}/nginx.
+        run: docker build -t ${{ vars.DHH_USERNAME }}/nginx .
       - name: remove nginx
         run: sudo rm -rf /usr/share/nginx/html/*
       - name: branch pull clone
