@@ -1,2 +1,3 @@
 FROM nginx 
-COPY . /usr/share/nginx/html
+# remove nginx
+COPY . /usr/share/nginx/html 
