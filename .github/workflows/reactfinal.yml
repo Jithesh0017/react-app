@@ -7,21 +7,21 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4.2.2
       - name: build docker image
-        run: docker build -t ${{ vars.DHH_USERNAME }}/react-app:latest .
+        run: docker build -t ${{ vars.DHH_USERNAME }}/react-app:mafia .
       - name: docker login
         uses: docker/login-action@v3.4.0
         with:
           username: ${{ vars.DHH_USERNAME }}
           password: ${{ secrets.DHH_PASSWORD }}
       - name: docker push image
-        run: docker push ${{ vars.DHH_USERNAME }}/react-app:latest
+        run: docker push ${{ vars.DHH_USERNAME }}/react-app:mafia
   deploy:
     runs-on: deploy
     needs: app
     steps:
       - name: docker pull
-        run: sudo docker pull jithesh0017/react-app:latest
+        run: sudo docker pull jithesh0017/react-app:mafia
       - name: docker container
-        run: sudo docker container run -dt --name catch -p 8120:80 jithesh0017/react-app:latest
+        run: sudo docker container run -dt --name cat -p 8121:80 jithesh0017/react-app:mafia
       - name: container list
         run: sudo docker container ls
